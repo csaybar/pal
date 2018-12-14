@@ -1,5 +1,5 @@
 #' Get palette of a image
-pal_get <- function(url = 'https://www.google.com',
+pal_get <- function(name = 'viridis',
                     rev = FALSE) {
   
 }
