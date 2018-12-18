@@ -1,6 +1,6 @@
-MIT License
+# MIT License
 
-Copyright (c) 2018 Cesar Luis Aybar Camacho
+Copyright (c) 2018 Cesar Aybar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

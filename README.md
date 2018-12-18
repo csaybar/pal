@@ -1,9 +1,20 @@
 # pal
-Collection of Color Palettes for categorized and graduated data
 
-<img align="right" src="https://user-images.githubusercontent.com/16768318/49789706-a2505f80-fcfa-11e8-9441-199ef4ee6fb1.png"  width="150">
+The goal of pal is to ...
 
-<br>
-<br>
+## Installation
 
-## Under development 
+You can install the released version of pal from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("pal")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+## basic example code
+```
+
