@@ -1,4 +1,6 @@
-#' Search a colour palettes by attributes
+#' Returns color palette id's. pal_search provides
+#' a serie of characteristic that you can use for
+#' find the palette which best suits your interests.
 #'
 #' Search you ideal palette using the pal's color collection. It is generated
 #' from the website \href(cpt-city){http://soliton.vm.bytemark.co.uk/pub/cpt-city/},
