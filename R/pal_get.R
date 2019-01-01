@@ -1,24 +1,25 @@
-#' Returns color palette id's. pal_search provides
-#' a serie of characteristic that you can use for
-#' find the palette which best suits your interests.
+#' Function to return color palette id's
 #'
-#' Search you ideal palette using the pal's color collection. It is generated
-#' from the website \href(cpt-city){http://soliton.vm.bytemark.co.uk/pub/cpt-city/},
-#' \href(hex-color){https://www.color-hex.com/} and also some R palletes libraries.
+#' \code{\link{pal_search}} provides a serie of characteristic
+#' that you can use for find the palette which best
+#' suits your interests.
 #'
-#' You can search palettes using tags, a favorite color, a specific number of colors on
-#' the palette, grade of transparency, and if it presents uniform
-#' distribution.
+#' @param tags character; a label attached to each palette color for the
+#' purpose of identification.
+#' @param n numeric; a min number of colors on the palette.
+#' @param type character; discrete or continuos.
+#' @param colors character vector; Select a series of preferable
+#' colors to be included in your search. By default 'ALL' colors are considered.
+#' @param min_col_dist  Numeric; Radius search (at CIELabs space), the center
+#' point are the colors defined in 'colors' attribute.
+#' @param only_alpha  logical; TRUE/FALSE whether to include transparent
+#' color palettes into the search.
+#' @param palreturn Numeric; Return color palettes most fixed with your search.
+#' By default 25 are returned.
+#' @param catalogs character vector; databases considered for the search.
 #'
-#' @param name tags;
-#' @param name colors;
-#' @param name n;
-#' @param name alpha;
-#' @param name catalogs;
-#' @return Character. An unique 'key' value.
+#' @return character vector; a serie de unique color palette id's
 #' @export
-pal_get('coffee',colors = 'yellow')
-
 pal_get <- function(tags,
                     n = 2,
                     type = c('continuos','discrete'),
@@ -60,6 +61,25 @@ pal_get <- function(tags,
 
 
 
+#' Function used to search in each color database
+#'
+#' \code{\link{pal_search}} provides a serie of characteristic
+#' that you can use for find the palette which best
+#' suits your interests.
+#'
+#' @param db character; color palette database.
+#' @param n numeric; a min number of colors on the palette.
+#' @param type character; discrete or continuos.
+#' @param colors character vector; Select a series of preferable
+#' colors to be included in your search. By default 'ALL' colors are considered.
+#' @param min_col_dist  Numeric; Radius search (at CIELabs space), the center
+#' point are the colors defined in 'colors' attribute.
+#' @param only_alpha  logical; TRUE/FALSE whether to include transparent
+#' color palettes into the search.
+#' @param palreturn Numeric; Return color palettes most fixed with your search.
+#' By default 25 are returned.
+#'
+#' @return character vector; a serie de unique color palette id's
 pal_search <- function(db,
                        tags,
                        n,
@@ -128,4 +148,3 @@ pal_search <- function(db,
   }
   return(db)
 }
-
