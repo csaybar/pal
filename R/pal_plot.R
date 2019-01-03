@@ -1,9 +1,9 @@
 #' Display multiple palettes in a plot
 #'
-#' @description
 #' pal_plot create an excellent visualization for
 #' finding the color palette that best suit your
 #' interests.
+#'
 #' @param colors list or vector; colors to plots,
 #' colors param must be in hexadecimal notation.
 #' @param newpage logical; TRUE/FALSE whether open a new page.
@@ -15,8 +15,10 @@
 #' @importFrom gridExtra arrangeGrob
 #' @importFrom plotly subplot ggplotly
 #' @examples
-#' palettes <- list(pal1 = c("#2F3869","#A9ABC6","#ECFC96","#B8A75E"), pal2 = c("#1E5CB4","#54C7CF","#FED71C","#A5262C"))
-#' pal_plot(palettes,plotly = T)
+#' pal1 <- c("#2F3869","#A9ABC6","#ECFC96","#B8A75E")
+#' pal2 <- c("#1E5CB4","#54C7CF","#FED71C","#A5262C")
+#' palettes <- list(pal1 = pal1, pal2 = pal2)
+#' pal_plot(palettes,plotly = TRUE)
 #' @export
 pal_plot <- function(colors, newpage = TRUE, plotly = FALSE) {
   if (is.character(colors)) {
@@ -37,13 +39,27 @@ pal_plot <- function(colors, newpage = TRUE, plotly = FALSE) {
     # image(matrix(1:100),col=df_color$col)
     df <- data_frame(len = 1:length(palcol), col = palnames[z])
     tex_pal <- sprintf("%s:%s", palnames[z], palcol)
-    d <- data_frame(xmin = 0.5, xmax = length(df$len) + 0.5, ymin = -0.5,
+    d <- data_frame(xmin = 0.5,
+                    xmax = length(df$len) + 0.5,
+                    ymin = -0.5,
                     ymax = 0.5)
-    colorbar <- suppressWarnings(ggplot() + geom_rect(data = d, mapping = aes(xmin = xmin,
-                                                                              xmax = xmax, ymin = ymin, ymax = ymax), color = "black", alpha = 0,
-                                                      size = 1) + geom_raster(data = df, aes(x = len, y = 0, fill = len,
-                                                                                             text = tex_pal)) + scale_fill_gradientn(colours = palcol) +
-                                   facet_wrap(~col) + theme_pal())
+    colorbar <- suppressWarnings(
+      ggplot() +
+          geom_rect(data = d,
+                    mapping = aes(xmin = xmin,
+                                  xmax = xmax,
+                                  ymin = ymin,
+                                  ymax = ymax),
+                    color = "black", alpha = 0,
+                    size = 1) +
+          geom_raster(data = df,
+                      aes(x = len,
+                          y = 0,
+                          fill = len,
+                          text = tex_pal)) +
+        scale_fill_gradientn(colours = palcol) +
+        facet_wrap(~col) +
+        theme_pal())
     if (plotly) {
       col_list[[z]] <- ggplotly(colorbar, tooltip = "text")
     } else {
@@ -54,7 +70,8 @@ pal_plot <- function(colors, newpage = TRUE, plotly = FALSE) {
   if (plotly) {
     plotly_cols <- col_list
     if (length(plotly_cols) > 1) {
-      subplot(plotly_cols, nrows = nrows, shareX = F, shareY = F,
+      subplot(plotly_cols, nrows = nrows,
+              shareX = F, shareY = F,
               titleX = T, titleY = T)
     } else {
       plotly_cols

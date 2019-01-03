@@ -2,7 +2,8 @@
 #'
 #' A ggplot2 theme for plot multiple color palletes.
 #'
-#' @importFrom  ggplot2 theme_minimal theme
+#' @importFrom ggplot2 theme_minimal theme %+replace% element_blank element_text
+#' @importFrom grid unit
 #' @export
 theme_pal <- function() {
   theme_minimal() %+replace% theme(legend.position = "none", axis.text.y = element_blank(),

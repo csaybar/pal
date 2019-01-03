@@ -1,12 +1,27 @@
 Package: pal
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+Title: A color palette search engine.
+Description: Search the color palette that best suit
+    your interests can become a tired activity. 
+    This package facilitates find your ideal color
+    palette by making the package collections: cpt-city,
+    hex-color and paletteer more accessible to realize 
+    queries. There are more than 80 000 > palettes 
+    waiting to be used!.
+Version: 0.0.0.1
+Author: Cesar Aybar
+Maintainer: Cesar Aybar <csaybar@gmail.com>
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/csaybar/pal/
+BugReports: https://github.com/csaybar/pal/issues
+RoxygenNote: 6.1.1
+Depends:
+    R (>= 3.4)
+Imports:
+    ggplot2,
+    tibble,
+    grid,
+    gridExtra,
+    plotly,
+    dplyr
