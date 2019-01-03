@@ -1,0 +1,9 @@
+^docs$
+^_pkgdown\.yml$
+^pal\.Rproj$
+^revdep$
+^LICENSE\.md$
+^pal\.Rproj$
+^\.Rproj\.user$
+^\.Rproj\.user$
+^README\.Rmd$
