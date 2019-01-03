@@ -11,15 +11,19 @@ pal_search(catalogs = c("cpt-city", "color-hex", "paletteer"),
 \arguments{
 \item{catalogs}{character vector; Collections of color palette.
 The color palette collections used in pal package come from: \cr
-- cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html \cr
-- color-hex: https://www.color-hex.com/color-palettes/
-- paletteer: https://github.com/EmilHvitfeldt/paletteer}
+\itemize{
+\item cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html \cr
+\item color-hex: https://www.color-hex.com/color-palettes/
+\item paletteer: https://github.com/EmilHvitfeldt/paletteer
+}}
 
 \item{type}{character vector; Type of palette. The type: \cr
-- 'diverging' \cr
-- 'qualitative' \cr
-- 'sequential' \cr
-only are supported by the 'paletteer'catalogs.}
+\itemize{
+\item 'diverging' \cr
+\item 'qualitative' \cr
+\item 'sequential' \cr
+only are supported by the 'paletteer'catalogs.
+}}
 
 \item{return}{numeric; Specify the number of palettes to be returned.}
 }

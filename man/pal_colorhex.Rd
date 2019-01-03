@@ -8,14 +8,14 @@
 the columns contains the following:
 
 \itemize{
-  \item tags: a character vector; label attached used for identification purpose.
-  \item color: a list of character vectors; Contains color information in hexadecimal notation.
-  \item n:  Numbers of colors used in the palette.
-  \item matrix: a list of matrices; Contains color information at CIELAB color space.
-  \item type: Type of the pallete. The type avaible are "discrete" or "continuous".
-  \item alpha: logical; TRUE/FALSE whether the palette present at least color with transparent.
-  \item names: character; "key" used for palette identification.
-  }}
+\item tags: a character vector; label attached used for identification purpose.
+\item color: a list of character vectors; Contains color information in hexadecimal notation.
+\item n:  Numbers of colors used in the palette.
+\item matrix: a list of matrices; Contains color information at CIELAB color space.
+\item type: Type of the pallete. The type avaible are "discrete" or "continuous".
+\item alpha: logical; TRUE/FALSE whether the palette present at least color with transparent.
+\item names: character; "key" used for palette identification.
+}}
 \usage{
 pal_colorhex
 }
