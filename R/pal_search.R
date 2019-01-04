@@ -20,8 +20,13 @@ pal_search <- function(catalogs = c('cpt-city','color-hex','paletteer'),
                        type = c('continuous', 'discrete', 'diverging',
                                 'qualitative','sequential'),
                        return = 25) {
+
+  palette <- new('pal')
+  global <- new('.pal_global',catalogs = catalogs,type = type,return = return)
+  palette@global <- global
+
   pal_valid_db <- c("cpt-city", "color-hex", "paletteer")
-  dbcheck <- pmatch(catalogs, pal_valid_db)
+  dbcheck <- pmatch(palette@global@catalogs, pal_valid_db)
 
   if (anyNA(dbcheck)) {
     stop(sprintf("\n Catalog: \"%s\" not was found.",
@@ -31,8 +36,12 @@ pal_search <- function(catalogs = c('cpt-city','color-hex','paletteer'),
   rda_names <- c("pal_cptcity", "pal_colorhex", "pal_paletteer")
   catalogs <- rda_names[dbcheck]
 
-  pal_obj <- structure(list(catalogs = catalogs,
-                            type = type, return = 25),
-                       class = "pal")
-  return(pal_obj)
+
+  color_db <- lapply(1:length(catalogs),
+                     function(x) eval(parse(text = rda_names[x])))
+
+  db <- bind_rows(color_db)
+  palette@db <- db
+
+  return(palette)
 }
