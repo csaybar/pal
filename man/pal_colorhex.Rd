@@ -4,29 +4,26 @@
 \name{pal_colorhex}
 \alias{pal_colorhex}
 \title{pal_colorhex: The color-hex dataset}
-\format{In This data_frame each row represent a single color palette,
-the columns contains the following:
-
+\format{In pal_colorhex each row represent a single palette, the columns contain the following information: \cr
 \itemize{
-\item tags: a character vector; label attached used for identification purpose.
+\item tags: a character vector; label attach used for identification purpose.
 \item color: a list of character vectors; Contains color information in hexadecimal notation.
 \item n:  Numbers of colors used in the palette.
 \item matrix: a list of matrices; Contains color information at CIELAB color space.
-\item type: Type of the pallete. The type avaible are "discrete" or "continuous".
-\item alpha: logical; TRUE/FALSE whether the palette present at least color with transparent.
+\item type: Type of the pallete. The types available are "discrete" and "continuous".
+\item alpha: logical; TRUE/FALSE whether the palette present at least one color with transparent.
 \item names: character; "key" used for palette identification.
 }}
 \usage{
 pal_colorhex
 }
 \description{
-This data set (save as a tibble::data_frame)
-gives a R-friendly access to characteristics of
-the \href{https://www.color-hex.com/color-palettes/}{color-hex} catalogs.
+This dataset gives friendly access to the \href{https://www.color-hex.com/color-palettes/}{color-hex} catalog.
 }
 \note{
 pal_colorhex comprises 68127 palettes. The tags were created scraping the official
-\href{https://www.color-hex.com/color-palettes/}{color-hex}.
-For get more documentation of each color palette visit the color-hex webpage.
+\href{https://www.color-hex.com/color-palettes/}{color-hex} website.
+For get more documentation of each color palette visit the
+\href{https://www.color-hex.com/color-palettes/}{color-hex} website.
 }
 \keyword{datasets}

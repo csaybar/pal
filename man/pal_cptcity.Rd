@@ -4,29 +4,27 @@
 \name{pal_cptcity}
 \alias{pal_cptcity}
 \title{pal_cptcity: The cpt-city dataset}
-\format{In This data_frame each row represent a single color palette,
-the columns contains the following: \cr
+\format{In pal_cptcity each row represent a single palette, the columns contain the following information: \cr
 \itemize{
-\item tags: a character vector; label attached used for identification purpose.
+\item tags: a character vector; label attach used for identification purpose.
 \item color: a list of character vectors; Contains color information in hexadecimal notation.
 \item n:  Numbers of colors used in the palette.
 \item matrix: a list of matrices; Contains color information at CIELAB color space.
-\item type: Type of the pallete. The type avaible are "discrete" or "continuous".
-\item alpha: logical; TRUE/FALSE whether the palette present at least color with transparent.
+\item type: Type of the pallete. The types available are "discrete" and "continuous".
+\item alpha: logical; TRUE/FALSE whether the palette present at least one color with transparent.
 \item names: character; "key" used for palette identification.
 }}
 \usage{
 pal_cptcity
 }
 \description{
-This data set (save as a tibble::data_frame)
-gives a R-friendly access to characteristics of
-the \href{cpt-city}{http://soliton.vm.bytemark.co.uk/pub/cpt-city/} catalogs.
+This dataset gives friendly access to the \href{http://soliton.vm.bytemark.co.uk/pub/cpt-city/}{cpt-city} catalog.
 }
 \note{
 pal_cptcity comprises 7140 palettes. The tags were created scraping the official
 \href{http://soliton.vm.bytemark.co.uk/pub/cpt-city/}{cpt-city}
-web site manteined by J.J. Green. Please respect the authors' copyright.
-For get more documentation of each color palette visit the cpt-city webpage.
+website manteined by J.J. Green. Please respect the authors' copyright.
+For get more documentation of each color palette visit the
+\href{http://soliton.vm.bytemark.co.uk/pub/cpt-city/}{cpt-city} website.
 }
 \keyword{datasets}
