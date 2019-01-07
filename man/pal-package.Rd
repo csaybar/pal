@@ -6,14 +6,14 @@
 \alias{pal-package}
 \title{pal: A color palette search engine.}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' width = 100px}}
+\if{html}{\figure{logo.png}{options: align='right'}}
 
 Search the color palette that best suit
-    your interests can become a tired activity.
+    your interests can become a tired activity. 
     This package facilitates find your ideal color
     palette by making the package collections: cpt-city,
-    hex-color and paletteer more accessible to realize
-    queries. There are more than 80 000 > palettes
+    hex-color and paletteer more accessible to realize 
+    queries. There are more than 80 000 > palettes 
     waiting to be used!.
 }
 \seealso{

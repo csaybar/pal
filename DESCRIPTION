@@ -26,3 +26,17 @@ Imports:
     gridExtra,
     plotly,
     dplyr
+Collate: 
+    'aaa-classes.R'
+    'aaa-generics.R'
+    'data.R'
+    'pal.R'
+    'pal_colors.R'
+    'pal_construction.R'
+    'pal_n.R'
+    'pal_pipe.R'
+    'pal_plot.R'
+    'pal_search.R'
+    'pal_show.R'
+    'pal_tags.R'
+    'theme_pal.R'

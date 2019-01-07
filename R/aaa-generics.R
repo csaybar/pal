@@ -8,6 +8,7 @@
 #' @param x character vector,list or pal object; if x is a
 #' character vector or a list must be in hexadecimal notation
 #' or a built-in color names which R knows about (see `colors()`).
+#' @param return numeric;  Number of palettes to be returned in the plot.
 #' @param plotly logical; TRUE/FALSE whether a plotly plot must be returned.
 #' @importFrom ggplot2 ggplot aes geom_rect geom_raster scale_fill_gradientn facet_wrap
 #' @importFrom tibble data_frame
@@ -28,72 +29,57 @@
 #' #character
 #' pal <- c('blue','red','yellow')
 #' pal_plot(pal,plotly = FALSE)
-setGeneric("pal_plot", function(x, plotly) standardGeneric("pal_plot"))
+#'
+setGeneric("pal_plot", function(x, return = 25, plotly = TRUE) standardGeneric("pal_plot"))
 
-#' @rdname pal_plot-m
-#' @usage NULL
-pal_plt <- function(x, plotly = FALSE) {
+#' Filter considering color complexity.
+#'
+#' Palettes are constituted by a specific number of color.
+#' pal_n allow filter considering the number of colors on the palette.
+#'
+#' @param x pal object;
+#' @param min numeric; Minimum number of colors on the palette.
+#' @param max numeric; Maximum number of colors on the palette.
+#' @export
+#' @docType methods
+#' @rdname pal_n-m
+#' @examples
+#'
+#' pal_search() # Number of palettes : 77004
+#' pal_search() + pal_n(min = 100, max = 120) # Number of palettes : 500
+#'
+setGeneric("pal_n", function(x, min = 0L, max = Inf) standardGeneric("pal_n"))
 
-  palnames <- x@db$names
 
-  if (nrow(x@db) > x@global@return) {
-    npalettes <- x@global@return
-  } else {
-    npalettes <- nrow(x@db)
-  }
+#' Filter considering tags.
+#'
+#' pal_tags allow filter palettes considering the tags.
+#' For the catalogs:
+#' \href{https://www.color-hex.com/color-palettes/}{color-hex},
+#' \href{http://soliton.vm.bytemark.co.uk/pub/cpt-city/}{cpt-city}
+#' the tags were created scraping the website. For the
+#' \href{https://emilhvitfeldt.github.io/paletteer/}{paletteer}
+#' catalog the package and palette names were used by created the tags.
+#' @param x A pal object.
+#' @param \dots character, name of tags.
+#' @export
+#' @docType methods
+#' @rdname pal_tags-m
+#'
+setGeneric("pal_tags", function(x, ...) standardGeneric("pal_tags"))
 
-  col_list <- rep(list(NA), npalettes)
-  for (z in 1:npalettes) {
-    palcol <- x@db$colors[[z]]
-    # image(matrix(1:100),col=df_color$col)
-    df <- data_frame(len = 1:length(palcol), col = palnames[z])
-    tex_pal <- sprintf("%s:%s", palnames[z], palcol)
 
-    d <- data_frame(xmin = 0.5,
-                    xmax = sum(length(df$len),0.5),
-                    ymin = -0.5,
-                    ymax = 0.5)
-    colorbar <- suppressWarnings(
-      ggplot() +
-        geom_rect(data = d,
-                  mapping = aes(xmin = xmin,
-                                xmax = xmax,
-                                ymin = ymin,
-                                ymax = ymax),
-                  color = "black", alpha = 0,
-                  size = 1) +
-        geom_raster(data = df,
-                    aes(x = len,
-                        y = 0,
-                        fill = len,
-                        text = tex_pal)) +
-        scale_fill_gradientn(colours = palcol) +
-        facet_wrap(~col) +
-        theme_pal())
-    if (plotly) {
-      col_list[[z]] <- ggplotly(colorbar, tooltip = "text")
-    } else {
-      col_list[[z]] <- colorbar
-    }
-  }
-  nrows <- ceiling(sqrt(npalettes))
-  if (plotly) {
-    plotly_cols <- col_list
-    if (length(plotly_cols) > 1) {
-      subplot(plotly_cols, nrows = nrows,
-              shareX = F, shareY = F,
-              titleX = T, titleY = T)
-    } else {
-      plotly_cols[[1]]
-    }
-  } else {
-    grid.newpage()
-    if (length(col_list) > 1) {
-      g <- arrangeGrob(grobs = col_list, nrow = nrows)
-      grid.draw(g)
-      invisible(g)
-    } else {
-      col_list[[1]]
-    }
-  }
-}
+
+#' Filter considering colors.
+#'
+#' pal_colors allow filter palettes considering colors.
+#' @param x A pal object.
+#' @param only_alpha logical
+#' @param distance numeric, Distance to the colors.
+#' @param \dots character, name of colors.
+#' @export
+#' @docType methods
+#' @rdname pal_colors-m
+#'
+#'
+setGeneric("pal_colors", function(x, ..., dist = 75, only_alpha = TRUE) standardGeneric("pal_colors"))

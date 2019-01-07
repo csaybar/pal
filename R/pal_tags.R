@@ -1,6 +1,10 @@
-pal_tags <- function(pal = NULL, ...) {
+#' Filter considering tags
+#'
+#'@rdname pal_tags-m
+#'@aliases pal_tags, pal
+setMethod('pal_tags',signature('pal'), function(x, ...) {
   args <- match.call()
-  remove_words <- c('pal_tags', 'pal','.')
+  remove_words <- c('pal_tags', 'x','.')
   args <- as.character(args)
   args <- args[!args %in% remove_words]
 
@@ -10,10 +14,16 @@ pal_tags <- function(pal = NULL, ...) {
   } else {
     regex_exp <- args_tlw
   }
-  palette_db <- pal@db
+  palette_db <- x@db
   search_color <- grepl(regex_exp, palette_db$tags, perl = T)
   db_position <- which(search_color)
-  pal@db <- palette_db[db_position,]
-  pal@colors@colors <- args_tlw
-  return(pal)
-}
+  x@db <- palette_db[db_position,]
+  x@colors@colors <- args_tlw
+  return(x)
+})
+
+#' Filter considering tags
+#'
+#'@rdname pal_tags-m
+#'@aliases pal_tags, mn
+setMethod("pal_tags",signature(x = "character"), function(x, min, max) 'NULL')

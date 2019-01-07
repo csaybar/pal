@@ -13,16 +13,18 @@
 \alias{pal}
 \title{Display color palettes in a plot}
 \usage{
-\S4method{pal_plot}{character}(x, plotly = FALSE)
+\S4method{pal_plot}{character}(x, return = 25, plotly = TRUE)
 
-\S4method{pal_plot}{list}(x, plotly = FALSE)
+\S4method{pal_plot}{list}(x, return = 25, plotly = TRUE)
 
-\S4method{pal_plot}{pal}(x, plotly = FALSE)
+\S4method{pal_plot}{pal}(x, return = 25, plotly = TRUE)
 }
 \arguments{
 \item{x}{character vector,list or pal object; if x is a
 character vector or a list must be in hexadecimal notation
 or a built-in color names which R knows about (see \code{colors()}).}
+
+\item{return}{numeric;  Number of palettes to be returned in the plot.}
 
 \item{plotly}{logical; TRUE/FALSE whether a plotly plot must be returned.}
 }
@@ -41,4 +43,5 @@ pal_plot(palettes,plotly = TRUE)
 #character
 pal <- c('blue','red','yellow')
 pal_plot(pal,plotly = FALSE)
+
 }

@@ -22,7 +22,3 @@
   exp_name <- sprintf('%s %s %s', left_name, '%>%', rigth_name)
   eval(parse(text = exp_name))
 }
-
-
-
-

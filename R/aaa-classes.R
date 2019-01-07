@@ -1,29 +1,29 @@
 #' An S4 class to represent the global parameters of pal.
 #'
-#'@slot catalogs character vector; Collections of color palettes.
-#' The palette collections available in pal package are: \cr
+#'@slot catalogs character vector; Collections of palettes that
+#' are used in the search. The palette collections available in pal package are: \cr
 #' - cpt-city: http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html \cr
 #' - color-hex: https://www.color-hex.com/color-palettes/ \cr
 #' - paletteer: https://github.com/EmilHvitfeldt/paletteer \cr
-#'@slot type  character vector; Type of palette. The type: \cr
+#'@slot type character vector; Type of palette. The type: \cr
+#' - 'continuous' \cr
+#' - 'discrete' \cr
 #' - 'diverging' \cr
 #' - 'qualitative' \cr
 #' - 'sequential' \cr
-#' only are supported by the 'paletteer'catalogs. \cr
-#'@slot return numeric; Specify the number of palettes to be returned.
+#'
+#' The types: diverging, qualitative and sequential
+#' only are supported by the 'paletteer'catalog.
 setClass('.pal_global',
          representation(
            catalogs = 'character',
-           type = 'character',
-           return = 'numeric'),
+           type = 'character'),
          prototype(
            catalogs = c('cpt-city','color-hex','paletteer'),
            type = c('continuous', 'discrete', 'diverging',
-                    'qualitative','sequential'),
-           return = 25))
+                    'qualitative','sequential')))
 
-
-#' An S4 class to represent the color complexity of pal.
+#' An S4 class to represent the color complexity.
 #'
 #'@slot min numeric; min number of colors.
 #'@slot max numeric; max number of colors.
@@ -36,24 +36,26 @@ setClass('.pal_n',
            max = Inf))
 
 
-#' An S4 class to save the color characteristics of pal.
+#' An S4 class to save colors.
 #'
 #'@slot color character.
 #'@slot distance numeric.
 setClass('.pal_color',
          representation(colors = 'character',
+                        only_alpha = 'logical',
                         distance = 'numeric'),
          prototype(colors = NA_character_,
+                   only_alpha = FALSE,
                    distance = 75))
 
-#' An S4 class to save the tags of pal.
+#' An S4 class to save tags.
 #'
 #'@slot tags numeric.
 setClass('.pal_tags',
          representation(tags = 'character'),
          prototype(tags = NA_character_))
 
-#' An S4 class to save the tags of pal.
+#' An S4 class to represent pal attributes.
 #'
 #'@slot db tbl_df object.
 #'@slot global .pal_global object.
@@ -68,11 +70,12 @@ setClass('pal',
                         tags = '.pal_tags'),
          prototype())
 
+#' 'missing & NULL' superclass
+setClassUnion("mn", c("missing", "NULL"))
 
-#' Create a simple pal object
+#' Create a pal object from a character vector or a list
 #'
 #'@param col numeric.
-
 pal_cnstr <- function(col = NA) {
 
   if (is.character(col)) {
@@ -101,3 +104,4 @@ pal_cnstr <- function(col = NA) {
                            names = col_names)
   return(pal_pal)
 }
+
