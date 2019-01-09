@@ -1,4 +1,4 @@
-#' Create a pal search object
+#' Create a pal object
 #'
 #' @description
 #' pal_search() initializes a S4 object. It is also
@@ -20,12 +20,11 @@
 #' @return a pal object (see \linkS4class{pal}).
 #' @importFrom dplyr bind_rows
 #' @export
-pal_search <- function(catalogs = c('cpt-city','color-hex','paletteer'),
-                       type = c('continuous', 'discrete', 'diverging',
-                                'qualitative','sequential')) {
+pal_search <- function(catalogs = 'cpt-city',
+                       type = c('continuous', 'discrete')) {
 
   palette <- new('pal')
-  global <- new('.pal_global',catalogs = catalogs,type = type)
+  global <- new('.pal_global', catalogs = catalogs, type = type)
   palette@global <- global
 
   pal_valid_db <- c("cpt-city", "color-hex", "paletteer")

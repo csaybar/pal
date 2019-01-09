@@ -17,3 +17,10 @@ setMethod('pal_n',signature(x = 'pal'), function(x, min, max) {
 #'@usage NULL
 #'@aliases pal_n, missing, NULL
 setMethod("pal_n",signature(x = "mn"), function(x, min, max) 'NULL')
+
+#' Filter considering color complexity.
+#'
+#'@rdname pal_n-m
+#'@usage NULL
+#'@aliases pal_n, missing, NULL
+setMethod("pal_n",signature(x = "numeric"), function(x, min, max) 'NULL')

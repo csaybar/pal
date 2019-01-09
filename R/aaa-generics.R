@@ -43,6 +43,7 @@ setGeneric("pal_plot", function(x, return = 25, plotly = TRUE) standardGeneric("
 #' @export
 #' @docType methods
 #' @rdname pal_n-m
+#' @importFrom dplyr filter_
 #' @examples
 #'
 #' pal_search() # Number of palettes : 77004
@@ -77,6 +78,9 @@ setGeneric("pal_tags", function(x, ...) standardGeneric("pal_tags"))
 #' @param only_alpha logical
 #' @param distance numeric, Distance to the colors.
 #' @param \dots character, name of colors.
+#' @importFrom grDevices col2rgb
+#' @importFrom patchPlot RGB2Lab
+#' @importFrom fields rdist
 #' @export
 #' @docType methods
 #' @rdname pal_colors-m

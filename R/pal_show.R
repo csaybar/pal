@@ -1,10 +1,9 @@
 setMethod('show' , 'pal',
            function(object) {
              pal_show(object)
-           }
-)
+           })
 
-pal_show <- function(object, ...) {
+pal_show <- function(object) {
   cat('class              :' , class(object), '\n')
   ctl <- paste(object@global@catalogs,collapse = ', ')
   cat('catalogs           :' , ctl, '\n')
