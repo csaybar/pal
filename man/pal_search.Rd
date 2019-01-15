@@ -2,11 +2,9 @@
 % Please edit documentation in R/pal_search.R
 \name{pal_search}
 \alias{pal_search}
-\title{Create a pal search object}
+\title{Create a pal object}
 \usage{
-pal_search(catalogs = c("cpt-city", "color-hex", "paletteer"),
-  type = c("continuous", "discrete", "diverging", "qualitative",
-  "sequential"))
+pal_search(catalogs = "cpt-city", type = c("continuous", "discrete"))
 }
 \arguments{
 \item{catalogs}{character vector; Collections of palettes that

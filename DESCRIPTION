@@ -23,6 +23,7 @@ Imports:
     ggplot2,
     tibble,
     grid,
+    magrittr,
     gridExtra,
     plotly,
     dplyr
